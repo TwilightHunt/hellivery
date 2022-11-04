@@ -22,7 +22,7 @@ public class MoveComponent : MonoBehaviour
     {
         if (isGrounded)
         {
-        rb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
         }
     }
     private void Update()
@@ -33,6 +33,7 @@ public class MoveComponent : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //Debug.Log(MovementVector);
         rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
     }
 }
