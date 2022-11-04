@@ -5,8 +5,12 @@ using UnityEngine;
 public class MoveComponent : MonoBehaviour
 {
     [SerializeField] float speed;
-    [HideInInspector] public Vector2 movementVector;
+    [SerializeField] float jumpForce;
+    [HideInInspector] public Vector2 MovementVector;
     Rigidbody2D rb;
+    [SerializeField] LayerMask groundMask;
+    [SerializeField] Transform groundCheck;
+    const float k_GroundedRadius = .2f;
     bool isGrounded;
 
     void Start()
@@ -16,11 +20,19 @@ public class MoveComponent : MonoBehaviour
 
     public void Jump()
     {
-        Debug.Log("Jump!");
+        if (isGrounded)
+        {
+        rb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
+        }
     }
-
+    private void Update()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, k_GroundedRadius,groundMask);
+        if(colliders.Length>0) isGrounded = true;
+        else isGrounded = false;
+    }
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(movementVector.x * speed, rb.velocity.y);
+        rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
     }
 }

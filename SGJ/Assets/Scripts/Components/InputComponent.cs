@@ -9,7 +9,7 @@ public class InputComponent : MonoBehaviour
 
     private void Start()
     {
-        moveComponent = FindObjectOfType<MoveComponent>();
+        moveComponent = GetComponent<MoveComponent>();
     }
 
     public void OnJump()
@@ -18,7 +18,7 @@ public class InputComponent : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveComponent.movementVector = context.ReadValue<Vector2>();
+        moveComponent.MovementVector = context.ReadValue<Vector2>();
     }
 
 
