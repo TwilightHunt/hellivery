@@ -5,15 +5,15 @@ using UnityEngine;
 public class MoveComponent : MonoBehaviour
 {
     [SerializeField] float speed;
-    InputComponent input;
+    [HideInInspector] public Vector2 movementVector;
 
     void Start()
     {
-        input = GetComponent<InputComponent>();
+       
     }
 
     void FixedUpdate()
     {
-        GetComponent<Rigidbody2D>().velocity = input.movementVector * speed * Time.deltaTime * 10f;
+        GetComponent<Rigidbody2D>().velocity = movementVector * speed * Time.deltaTime * 10f;
     }
 }

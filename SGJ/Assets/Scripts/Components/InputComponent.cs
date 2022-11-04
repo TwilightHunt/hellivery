@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class InputComponent : MonoBehaviour
 {
     public Vector2 movementVector { get; private set; }
-    // Start is called before the first frame update
+    MoveComponent moveComponent;
+
     void Start()
     {
         
@@ -20,6 +21,6 @@ public class InputComponent : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        movementVector = context.ReadValue<Vector2>();
+        moveComponent.movementVector = context.ReadValue<Vector2>();
     }
 }
