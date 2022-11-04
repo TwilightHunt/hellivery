@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class MoveComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float speed;
+    InputComponent input;
+
     void Start()
     {
-        
+        input = GetComponent<InputComponent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        GetComponent<Rigidbody2D>().velocity = input.movementVector * speed * Time.deltaTime * 10f;
     }
 }
