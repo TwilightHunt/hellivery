@@ -21,6 +21,6 @@ public class InputComponent : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveComponent.movementVector = context.ReadValue<Vector2>();
+        moveComponent.Move(context.ReadValue<Vector2>());
     }
 }
