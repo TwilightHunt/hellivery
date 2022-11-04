@@ -10,7 +10,7 @@ public class InputComponent : MonoBehaviour
 
     void Start()
     {
-        
+        moveComponent = GetComponent<MoveComponent>();
     }
 
     // Update is called once per frame
