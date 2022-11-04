@@ -13,12 +13,10 @@ public class InputComponent : MonoBehaviour
         moveComponent = GetComponent<MoveComponent>();
     }
 
-    // Update is called once per frame
-    void Update()
+   public void OnJump()
     {
-        
+        moveComponent.Jump();
     }
-
     public void OnMove(InputAction.CallbackContext context)
     {
         moveComponent.Move(context.ReadValue<Vector2>());

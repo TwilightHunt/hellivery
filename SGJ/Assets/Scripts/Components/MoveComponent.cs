@@ -14,9 +14,13 @@ public class MoveComponent : MonoBehaviour
 
     public void Move(Vector2 movementVector)
     {
+        Debug.Log("Move");
         rb.velocity = movementVector * speed;
     }
-
+    public void Jump()
+    {
+        Debug.Log("Jump");
+    }
     void FixedUpdate()
     {
     }
