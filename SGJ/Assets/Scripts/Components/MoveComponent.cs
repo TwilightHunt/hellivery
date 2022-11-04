@@ -7,21 +7,20 @@ public class MoveComponent : MonoBehaviour
     [SerializeField] float speed;
     [HideInInspector] public Vector2 movementVector;
     Rigidbody2D rb;
-    private void Start()
+    bool isGrounded;
+
+    void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();    
     }
 
-    public void Move(Vector2 movementVector)
-    {
-        Debug.Log("Move");
-        rb.velocity = movementVector * speed;
-    }
     public void Jump()
     {
-        Debug.Log("Jump");
+        Debug.Log("Jump!");
     }
+
     void FixedUpdate()
     {
+        rb.velocity = new Vector2(movementVector.x * speed, rb.velocity.y);
     }
 }
