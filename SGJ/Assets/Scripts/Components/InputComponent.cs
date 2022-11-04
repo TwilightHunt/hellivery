@@ -12,7 +12,7 @@ public class InputComponent : MonoBehaviour
         moveComponent = FindObjectOfType<MoveComponent>();
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+    public void OnJump()
     {
         moveComponent.Jump();
     }
