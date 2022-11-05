@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3935093106392498045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.48, z: 0}
+  m_LocalPosition: {x: 0, y: -0.518, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6515169614094664490}
@@ -45,11 +45,11 @@ GameObject:
   - component: {fileID: 1550147279}
   - component: {fileID: 1550147280}
   - component: {fileID: 1550147285}
-  - component: {fileID: 755351204}
   - component: {fileID: 755351205}
+  - component: {fileID: 755351197}
   m_Layer: 0
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5f2683252828cee49819cd3d2fc0e1e6, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -197,7 +197,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 6299106474556818867}
 --- !u!114 &1550147285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,23 +255,43 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 66f2371f-eca6-43f3-8b02-53331ceb3639
     m_ActionName: Movement/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1550147279}
+        m_TargetAssemblyTypeName: InputComponent, Assembly-CSharp
+        m_MethodName: TeleportForward
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 47daab7e-31f7-45f5-9670-984ad7a54f5a
+    m_ActionName: Movement/TeleportForward
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1550147279}
+        m_TargetAssemblyTypeName: InputComponent, Assembly-CSharp
+        m_MethodName: TeleportBackward
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e8c45116-d248-4a7e-8e01-ea9f2775028d
+    m_ActionName: Movement/TeleportBackward
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &755351204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5954344794087435056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5857fe6642ad34d43afadafbdc05671a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &755351205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,3 +306,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallMultiplier: 2.5
   lowJumpMultiplier: 3
+--- !u!114 &755351197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954344794087435056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b13fe91cda3bd31459a6be743774a39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDimensionIndex: 1

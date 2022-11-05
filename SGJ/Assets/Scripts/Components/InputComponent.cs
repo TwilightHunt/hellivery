@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class InputComponent : MonoBehaviour
 {
-    MoveComponent moveComponent;
 
+    MoveComponent moveComponent;
     private void Start()
     {
         moveComponent = GetComponent<MoveComponent>();

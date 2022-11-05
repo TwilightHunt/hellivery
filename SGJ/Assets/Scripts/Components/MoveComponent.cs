@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MoveComponent : MonoBehaviour
 {
+    public UnityEngine.Events.UnityEvent OnJump;
+    public UnityEngine.Events.UnityEvent OnLand;
+
     [SerializeField] float speed;
     [SerializeField] float jumpForce;
     [HideInInspector] public Vector2 MovementVector;
@@ -22,13 +25,18 @@ public class MoveComponent : MonoBehaviour
     {
         if (isGrounded)
         {
-        rb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
+            OnJump?.Invoke();
         }
     }
     private void Update()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, k_GroundedRadius,groundMask);
-        if(colliders.Length>0) isGrounded = true;
+        if (colliders.Length > 0 && !isGrounded) 
+        { 
+            isGrounded = true; 
+            OnLand?.Invoke();
+        }
         else isGrounded = false;
     }
     void FixedUpdate()
