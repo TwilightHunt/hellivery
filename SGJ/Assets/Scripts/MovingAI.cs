@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorizontalAI : MonoBehaviour
+public class MovingAI : MonoBehaviour
 {
     [SerializeField] Vector2 lookDirection = new Vector2(1, 0);
     [SerializeField] float distance;
@@ -17,6 +17,8 @@ public class HorizontalAI : MonoBehaviour
 
     void Update()
     {
+        Debug.DrawRay(transform.position, lookDirection, Color.red);
+
         if(Physics2D.Raycast(transform.position, lookDirection, distance, ~LayerMask.GetMask("Ignore Raycast")))
         {
             lookDirection *= -1;

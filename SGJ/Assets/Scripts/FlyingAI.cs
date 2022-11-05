@@ -7,7 +7,7 @@ public enum FlyingDirection
     Vertical,
     Horizontal,
 }
-public class VerticalAI : MonoBehaviour
+public class FlyingAI : MonoBehaviour
 {
     [SerializeField] float seconds;
     [SerializeField] FlyingDirection flyDirection;
