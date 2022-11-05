@@ -21,9 +21,6 @@ public class MovingAI : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawRay(visionRaycastTransform.position, moveDirection, Color.red);
-        Debug.DrawRay(groundRaycastTransform.position, Vector2.down, Color.red);
-
 
         if (Physics2D.Raycast(visionRaycastTransform.position, moveDirection, visionDistance, ~LayerMask.GetMask("Ignore Raycast")))
         {

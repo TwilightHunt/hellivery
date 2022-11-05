@@ -8,9 +8,13 @@ public class InputComponent : MonoBehaviour
 {
 
     GroundMoveComponent moveComponent;
+    EnemyCatcher catcherComponent;
+    PlayerAnimationController playerAnimationController;
     private void Start()
     {
+        playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
         moveComponent = GetComponent<GroundMoveComponent>();
+        catcherComponent = GetComponent<EnemyCatcher>();
     }
 
     public void OnJump()
@@ -19,8 +23,17 @@ public class InputComponent : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveComponent.MovementVector = context.ReadValue<Vector2>();
+        var moveDir = context.ReadValue<Vector2>();
+        moveComponent.MovementVector = moveDir;
+        playerAnimationController.moveDirection = moveDir;
     }
 
+    public void On1stMouseButtonClick(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            catcherComponent.OnMouseButtonClick();
+        }
+    }
 
 }
