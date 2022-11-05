@@ -16,6 +16,7 @@ public class GroundMoveComponent : MonoBehaviour
     const float k_GroundedRadius = .2f;
     bool isGrounded;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();    
@@ -44,7 +45,6 @@ public class GroundMoveComponent : MonoBehaviour
     }
     void FixedUpdate()
     {
-
         rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
     }
 }
