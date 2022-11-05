@@ -39,6 +39,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8239711692984994256}
     m_Modifications:
+    - target: {fileID: 4241250930735507660, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241250930735507660, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4241250931817985669, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
       propertyPath: m_Name
       value: Portal
@@ -116,6 +124,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8239711692984994256}
     m_Modifications:
+    - target: {fileID: 4241250930735507660, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241250930735507660, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4241250931817985669, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
       propertyPath: m_Name
       value: Portal (1)
