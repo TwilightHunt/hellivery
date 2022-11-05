@@ -10,6 +10,10 @@ public class PlatformHolder : MonoBehaviour
     {
         rb = GetComponentInParent<Rigidbody2D>();
     }
+    private void OnDisable()
+    {
+        Debug.Log("Disabled");
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2704066985590432318}
   - component: {fileID: 2704066985590432306}
   - component: {fileID: 2704066985590432307}
+  - component: {fileID: 7035292925967837740}
   m_Layer: 0
   m_Name: FlyingPlatform
   m_TagString: Untagged
@@ -97,6 +98,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.731306, y: 1.4156334}
   m_EdgeRadius: 0
+--- !u!114 &7035292925967837740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704066985590432319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444058807ae40f94eaa140d132963584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2704066985885579866
 GameObject:
   m_ObjectHideFlags: 0

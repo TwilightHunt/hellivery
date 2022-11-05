@@ -32,6 +32,7 @@ public class PortalInteraction : MonoBehaviour
     void Teleport()
     {
         PlayerObject.transform.position = OtherPortal.transform.position;
+        OnPortalTeleportation?.Invoke();
     }
 
     // Update is called once per frame

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingAI : MonoBehaviour
+public class MovingAI : MonoBehaviour, ISpawnable
 {
     [SerializeField] Vector2 moveDirection = new Vector2(1, 0);
     [SerializeField] float visionDistance;
@@ -15,8 +15,7 @@ public class MovingAI : MonoBehaviour
     void Start()
     {
         moveComponent = GetComponent<GroundMoveComponent>();
-        moveDirection = transform.right;
-        SetMoveVector();
+        Init();
     }
 
     void Update()
@@ -43,5 +42,11 @@ public class MovingAI : MonoBehaviour
     void SetMoveVector()
     {
         moveComponent.MovementVector = moveDirection;
+    }
+
+    public void Init()
+    {
+        moveDirection = transform.right;
+        SetMoveVector();
     }
 }

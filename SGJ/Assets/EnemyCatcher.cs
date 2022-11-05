@@ -13,10 +13,15 @@ public class EnemyCatcher : MonoBehaviour
 {
     public UnityEngine.Events.UnityEvent<string> OnCatchFail;
     public UnityEngine.Events.UnityEvent OnCatchSuccess;
+    public UnityEngine.Events.UnityEvent<string> OnReleaseFail;
+    public UnityEngine.Events.UnityEvent OnReleaseSuccess;
     public UnityEngine.Events.UnityEvent OnCatchStateChanged;
 
 
-    public CatchState CurrentState;
+    public CatchState CurrentState { get; private set; }
+
+    bool isIndexSelected = false;
+    int indexToRelease = 0;
 
     List<CatchableEnemy> catchedEnemies = new List<CatchableEnemy>();
     public int EnemyCapacity { get => enemyCapacity; }
@@ -54,10 +59,21 @@ public class EnemyCatcher : MonoBehaviour
                 break;
         }
     }
+    public void SetMonsterIndex(int index)
+    {
+        indexToRelease = index;
+        isIndexSelected = true;
+    }
     void Release()
     {
+       // if (!isIndexSelected) return;
+        
+       
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         catchedEnemies[0].Release(mousePosition,Quaternion.identity);
+        catchedEnemies[0].GetComponent<ISpawnable>().Init();
+        catchedEnemies.RemoveAt(0);
+        CurrentState = CatchState.Idle;
     }
     void TryToCatch()
     {
@@ -108,6 +124,8 @@ public class EnemyCatcher : MonoBehaviour
     }
     public void ChangeState(CatchState newState)
     {
+        isIndexSelected = false;
+        indexToRelease = -1;
         CurrentState = newState;
         OnCatchStateChanged?.Invoke();
     }

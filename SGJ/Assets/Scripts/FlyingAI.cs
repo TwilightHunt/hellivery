@@ -13,6 +13,7 @@ public class FlyingAI : MonoBehaviour
     [SerializeField] FlyingDirection flyDirection;
     [SerializeField] float speed = 5f;
     Vector2 direction;
+    float currentSeconds;
     int directionModifier = 1;
     Rigidbody2D rb;
     // Start is called before the first frame update
@@ -44,12 +45,11 @@ public class FlyingAI : MonoBehaviour
     {
         rb.velocity = direction * directionModifier * speed; 
 
+        
     }
 
     IEnumerator ChangeDirection()
     {
-        directionModifier *= -1;
-
         yield return new WaitForSeconds(seconds);
         StartCoroutine(ChangeDirection());
     }

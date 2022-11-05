@@ -61,7 +61,7 @@ public class GroundMoveComponent : MonoBehaviour
         }
         else
         {
-                rb.velocity = new Vector2(MovementVector.x * speed + movingPlatformRb.velocity.x, rb.velocity.y);
+            rb.velocity = new Vector2(MovementVector.x * speed + movingPlatformRb.velocity.x, rb.velocity.y);
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    public Vector2 moveDirection;
+    [HideInInspector] public Vector2 moveDirection;
     Animator animator;
     Rigidbody2D rb;
     bool isMovingForward;
