@@ -5,29 +5,46 @@ using UnityEngine;
 
 public class MovingAI : MonoBehaviour
 {
-    [SerializeField] Vector2 lookDirection = new Vector2(1, 0);
-    [SerializeField] float distance;
+    [SerializeField] Vector2 moveDirection = new Vector2(1, 0);
+    [SerializeField] float visionDistance;
+    [SerializeField] float groundDistance;
+    [SerializeField] Transform groundRaycastTransform;
+    [SerializeField] Transform visionRaycastTransform;
     GroundMoveComponent moveComponent;
 
     void Start()
     {
         moveComponent = GetComponent<GroundMoveComponent>();
+        moveDirection = transform.right;
         SetMoveVector();
     }
 
     void Update()
     {
-        Debug.DrawRay(transform.position, lookDirection, Color.red);
+        Debug.DrawRay(visionRaycastTransform.position, moveDirection, Color.red);
+        Debug.DrawRay(groundRaycastTransform.position, Vector2.down, Color.red);
 
-        if(Physics2D.Raycast(transform.position, lookDirection, distance, ~LayerMask.GetMask("Ignore Raycast")))
+
+        if (Physics2D.Raycast(visionRaycastTransform.position, moveDirection, visionDistance, ~LayerMask.GetMask("Ignore Raycast")))
         {
-            lookDirection *= -1;
+            Flip();
+            SetMoveVector();
+        }
+        else if (!Physics2D.Raycast(groundRaycastTransform.position, Vector2.down, groundDistance, ~LayerMask.GetMask("Ignore Raycast")))
+        {
+            Flip();
             SetMoveVector();
         }
     }
 
+    private void Flip()
+    {
+        transform.Rotate(new Vector3(0, 180, 0));
+        moveDirection = transform.right;
+    }
+
     void SetMoveVector()
     {
-        moveComponent.MovementVector = lookDirection;
+        moveComponent.MovementVector = moveDirection;
     }
 }
