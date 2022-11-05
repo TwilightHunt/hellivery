@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveComponent : MonoBehaviour
+public class GroundMoveComponent : MonoBehaviour
 {
     public UnityEngine.Events.UnityEvent OnJump;
     public UnityEngine.Events.UnityEvent OnLand;
@@ -32,10 +32,13 @@ public class MoveComponent : MonoBehaviour
     private void Update()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, k_GroundedRadius,groundMask);
-        if (colliders.Length > 0 && !isGrounded) 
-        { 
-            isGrounded = true; 
-            OnLand?.Invoke();
+        if (colliders.Length > 0) 
+        {
+            if (!isGrounded)
+            {
+                isGrounded = true;
+                OnLand?.Invoke();
+            }
         }
         else isGrounded = false;
     }

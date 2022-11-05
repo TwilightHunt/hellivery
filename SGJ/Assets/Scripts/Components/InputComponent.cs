@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 public class InputComponent : MonoBehaviour
 {
 
-    MoveComponent moveComponent;
+    GroundMoveComponent moveComponent;
     private void Start()
     {
-        moveComponent = GetComponent<MoveComponent>();
+        moveComponent = GetComponent<GroundMoveComponent>();
     }
 
     public void OnJump()

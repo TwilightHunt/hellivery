@@ -7,11 +7,11 @@ public class HorizontalAI : MonoBehaviour
 {
     [SerializeField] Vector2 lookDirection = new Vector2(1, 0);
     [SerializeField] float distance;
-    MoveComponent moveComponent;
+    GroundMoveComponent moveComponent;
 
     void Start()
     {
-        moveComponent = GetComponent<MoveComponent>();
+        moveComponent = GetComponent<GroundMoveComponent>();
         SetMoveVector();
     }
 
