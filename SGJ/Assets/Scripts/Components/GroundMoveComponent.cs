@@ -16,6 +16,7 @@ public class GroundMoveComponent : MonoBehaviour
     const float k_GroundedRadius = .2f;
     bool isGrounded;
 
+    Rigidbody2D movingPlatformRb;
 
     void Start()
     {
@@ -43,8 +44,20 @@ public class GroundMoveComponent : MonoBehaviour
         }
         else isGrounded = false;
     }
+
+    public void SetMovingPlatform(Rigidbody2D movingPlatformRb)
+    {
+        this.movingPlatformRb = movingPlatformRb;
+    }
     void FixedUpdate()
     {
+        if(movingPlatformRb == null)
+        {
         rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y) + movingPlatformRb.velocity;
+        }
     }
 }
