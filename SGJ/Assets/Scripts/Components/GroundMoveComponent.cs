@@ -11,13 +11,10 @@ public class GroundMoveComponent : MonoBehaviour
     [SerializeField] float jumpForce;
     [HideInInspector] public Vector2 MovementVector;
     Rigidbody2D rb;
-    [SerializeField] bool canJump = true;
     [SerializeField] LayerMask groundMask;
     [SerializeField] Transform groundCheck;
     const float k_GroundedRadius = .2f;
     bool isGrounded;
-
-    Rigidbody2D movingPlatformRb;
 
     void Start()
     {
@@ -26,7 +23,7 @@ public class GroundMoveComponent : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded && canJump)
+        if (isGrounded)
         {
             rb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
             OnJump?.Invoke();
@@ -34,8 +31,6 @@ public class GroundMoveComponent : MonoBehaviour
     }
     private void Update()
     {
-        if (canJump)
-        {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, k_GroundedRadius,groundMask);
         if (colliders.Length > 0) 
         {
@@ -46,29 +41,10 @@ public class GroundMoveComponent : MonoBehaviour
             }
         }
         else isGrounded = false;
-        }
-    }
-
-    public void SetMovingPlatform(Rigidbody2D movingPlatformRb)
-    {
-        this.movingPlatformRb = movingPlatformRb;
     }
     void FixedUpdate()
     {
-        if(movingPlatformRb == null)
-        {
-            rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
-        }
-        else
-        {
-           /* if(movingPlatformRb.velocity.y < 0)
-            {
-                rb.velocity = new Vector2(MovementVector.x * speed + movingPlatformRb.velocity.x, rb.velocity.y + movingPlatformRb.velocity.y);
-            }
-            else
-            {
-                rb.velocity = new Vector2(MovementVector.x * speed + movingPlatformRb.velocity.x, rb.velocity.y);
-            }*/
-        }
+
+        rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
     }
 }
