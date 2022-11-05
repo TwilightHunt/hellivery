@@ -44,7 +44,18 @@ public class GroundMoveComponent : MonoBehaviour
     }
     void FixedUpdate()
     {
+<<<<<<< HEAD
 
         rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
+=======
+        if(movingPlatformRb == null)
+        {
+            rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
+        }
+        else
+        {
+                rb.velocity = new Vector2(MovementVector.x * speed + movingPlatformRb.velocity.x, rb.velocity.y);
+        }
+>>>>>>> c8d935fb7d8c95a0fc09573082891624f8ec5906
     }
 }
