@@ -41,6 +41,7 @@ public class MoveComponent : MonoBehaviour
     }
     void FixedUpdate()
     {
+
         rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
     }
 }
