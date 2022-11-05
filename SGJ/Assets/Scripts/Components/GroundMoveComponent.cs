@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GroundMoveComponent : MonoBehaviour
@@ -30,23 +28,26 @@ public class GroundMoveComponent : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
             OnJump?.Invoke();
+            GetComponentInChildren<PlayerAnimationController>().SetAnimation("JumpAnimation");
         }
     }
     private void Update()
     {
         if (canJump)
         {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, k_GroundedRadius,groundMask);
-        if (colliders.Length > 0) 
-        {
-            if (!isGrounded)
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, k_GroundedRadius,groundMask);
+            if (colliders.Length > 0) 
             {
-                isGrounded = true;
-                OnLand?.Invoke();
+                if (!isGrounded)
+                {
+                    isGrounded = true;
+                    OnLand?.Invoke();
+                }
             }
+            else isGrounded = false;
         }
-        else isGrounded = false;
-        }
+
+        GetComponentInChildren<PlayerAnimationController>().isFalling = !isGrounded;
     }
 
     public void SetMovingPlatform(Rigidbody2D movingPlatformRb)
