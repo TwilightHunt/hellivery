@@ -7,7 +7,6 @@ public enum FlyingDirection
     Vertical,
     Horizontal,
 }
-public class FlyingAI : MonoBehaviour
 {
     [SerializeField] float seconds;
     [SerializeField] FlyingDirection flyDirection;
@@ -21,8 +20,6 @@ public class FlyingAI : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Init();
-        StartCoroutine(ChangeDirection());
-
     }
     public void Init()
     {
