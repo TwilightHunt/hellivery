@@ -5,16 +5,13 @@ using DG.Tweening;
 public class HandMovement : MonoBehaviour
 {
     public Vector3 EndRotation;
-    public float Duration = 2f;
+    public float MaxDuration;
+    public float MinDuration = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
-        transform.DORotate(EndRotation,0.3f).SetLoops(-1, LoopType.Yoyo);
+        float Duration = Random.Range(MinDuration, MaxDuration);
+        transform.DORotate(EndRotation, Duration).SetLoops(-1, LoopType.Yoyo);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -7,7 +7,7 @@ public enum FlyingDirection
     Vertical,
     Horizontal,
 }
-public class VerticalAI : MonoBehaviour
+public class FlyingAI : MonoBehaviour
 {
     [SerializeField] float seconds;
     [SerializeField] FlyingDirection flyDirection;
@@ -19,20 +19,24 @@ public class VerticalAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Init();
+        StartCoroutine(ChangeDirection());
+
+    }
+    public void Init()
+    {
         switch (flyDirection)
         {
             case FlyingDirection.Vertical:
-                direction = new Vector2(0, 1);
+                direction = Vector2.up;
                 break;
             case FlyingDirection.Horizontal:
-                direction = new Vector2(1, 0);
+                direction = transform.right;
                 break;
             default:
                 Debug.LogError($"WRONG DIRECTION ON {gameObject.name}'s FLYING AI");
                 break;
         }
-        StartCoroutine(ChangeDirection());
-
     }
 
     // Update is called once per frame
