@@ -13,6 +13,8 @@ public class EnemyCatcher : MonoBehaviour
 {
     public UnityEngine.Events.UnityEvent<string> OnCatchFail;
     public UnityEngine.Events.UnityEvent OnCatchSuccess;
+    public UnityEngine.Events.UnityEvent OnCatchStateChanged;
+
 
     public CatchState CurrentState;
 
@@ -24,6 +26,10 @@ public class EnemyCatcher : MonoBehaviour
 
     [SerializeField] float portalRadius = 0.3f;
 
+    private void Start()
+    {
+        CurrentState = CatchState.Idle;
+    }
     public void IncreaseRadius(float additionalRadius)
     {
         catchRadius += additionalRadius;
@@ -42,12 +48,18 @@ public class EnemyCatcher : MonoBehaviour
                 TryToCatch();
                 break;
             case CatchState.Releasing:
+                Release();
                 break;
             default:
                 break;
         }
     }
-    public void TryToCatch()
+    void Release()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        catchedEnemies[0].Release(mousePosition,Quaternion.identity);
+    }
+    void TryToCatch()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
@@ -56,7 +68,11 @@ public class EnemyCatcher : MonoBehaviour
 
 
         var enemy = colliders.FirstOrDefault(x => x.GetComponent<CatchableEnemy>() != null);
-        if (enemy == null) return;
+        if (enemy == null)
+        {
+            OnCatchFail?.Invoke("No monsters found");
+            return;
+        }
         else
         {
             CatchableEnemy cEnemy = enemy.GetComponent<CatchableEnemy>();
@@ -64,11 +80,35 @@ public class EnemyCatcher : MonoBehaviour
             {
                 cEnemy.Catch();
                 catchedEnemies.Add(cEnemy);
+                OnCatchSuccess?.Invoke();
+            }
+            else
+            {
+                OnCatchFail?.Invoke("No more room for monsters");
             }
         }
+        ChangeState(CatchState.Idle);
     }
     private void Update()
     {
+        if(CurrentState == CatchState.Idle)
+        {
+            if (Input.GetButtonDown("QButton"))
+            {
+                CurrentState = CatchState.Catching;
+                return;
+            }
+            if (Input.GetButtonDown("EButton"))
+            {
+                CurrentState = CatchState.Releasing;
+                return;
+            }
+        }
 
+    }
+    public void ChangeState(CatchState newState)
+    {
+        CurrentState = newState;
+        OnCatchStateChanged?.Invoke();
     }
 }
