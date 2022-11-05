@@ -33,7 +33,7 @@ public class PlayerAnimationController : MonoBehaviour
         }
 
         animator.SetBool("isFalling", isFalling);
-        if (isFalling && !animator.GetCurrentAnimatorStateInfo(0).IsName("FlyAnimation")) { SetAnimation("FlyDown"); }
+        //if (isFalling && !animator.GetCurrentAnimatorStateInfo(0).IsName("FlyAnimation")) { SetAnimation("FlyDown"); }
     }
     private void Flip()
     {
