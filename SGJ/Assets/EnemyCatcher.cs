@@ -120,6 +120,30 @@ public class EnemyCatcher : MonoBehaviour
                 return;
             }
         }
+        if(CurrentState == CatchState.Releasing)
+        {
+            int desiredIndex = -1;
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                desiredIndex = 0;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                desiredIndex = 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                desiredIndex = 2;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                desiredIndex = 3;
+            }
+            if(desiredIndex+1<=enemyCapacity && catchedEnemies[desiredIndex] != null)
+            {
+                SetMonsterIndex(desiredIndex);
+            }
+        }
 
     }
     public void ChangeState(CatchState newState)
