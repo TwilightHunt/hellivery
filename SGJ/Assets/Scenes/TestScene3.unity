@@ -829,7 +829,7 @@ RectTransform:
   m_Children:
   - {fileID: 1856737113}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1174,7 +1174,7 @@ Transform:
   - {fileID: 90596023}
   - {fileID: 2089749619}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618786802
 GameObject:
@@ -1838,7 +1838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969028328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.1, y: -71.49477, z: 72.19525}
+  m_LocalPosition: {x: 10.06, y: -71.49477, z: 72.19525}
   m_LocalScale: {x: 5.2375, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 592204069}
@@ -4477,7 +4477,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1556414401791097746, guid: 82582c3bbeaa981448bb6858a69b4662, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1556414401791097746, guid: 82582c3bbeaa981448bb6858a69b4662, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4534,7 +4534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2704066985590432304, guid: 0273bdf0de819b2419da2bc83f841d23, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2704066985590432304, guid: 0273bdf0de819b2419da2bc83f841d23, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4580,9 +4580,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingPlatform
       objectReference: {fileID: 0}
-    - target: {fileID: 6207535520574826029, guid: 0273bdf0de819b2419da2bc83f841d23, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 94d76f74a975e4d49be461c895723b4b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0273bdf0de819b2419da2bc83f841d23, type: 3}

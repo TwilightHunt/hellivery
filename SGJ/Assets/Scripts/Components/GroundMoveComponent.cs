@@ -40,14 +40,14 @@ public class GroundMoveComponent : MonoBehaviour
             {
                 if (!isGrounded)
                 {
-                    isGrounded = true;
                     OnLand?.Invoke();
+                    isGrounded = true;
                 }
             }
             else isGrounded = false;
         }
 
-        GetComponentInChildren<PlayerAnimationController>().isFalling = !isGrounded;
+        
     }
 
     public void SetMovingPlatform(Rigidbody2D movingPlatformRb)

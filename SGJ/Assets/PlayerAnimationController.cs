@@ -27,12 +27,12 @@ public class PlayerAnimationController : MonoBehaviour
     }
     void OnLand()
     {
-
+        animator.SetTrigger("OnLand");
     }
     private void Update()
     {
-        animator.SetFloat("HorizontalSpeed", (int)Mathf.Abs(Input.GetAxisRaw("Horizontal")));
-        animator.SetFloat("VerticalSpeed", rb.velocity.y);
+        animator.SetInteger("HorizontalSpeed", (int)Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+        animator.SetFloat("VerticalVelocity", rb.velocity.y);
         if (isMovingForward && moveDirection.x < 0)
         {
             Flip();
