@@ -66,13 +66,13 @@ public class EnemyCatcher : MonoBehaviour
     }
     void Release()
     {
-       // if (!isIndexSelected) return;
+       if (!isIndexSelected) return;
         
        
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        catchedEnemies[0].Release(mousePosition,Quaternion.identity);
-        catchedEnemies[0].GetComponent<ISpawnable>().Init();
-        catchedEnemies.RemoveAt(0);
+        catchedEnemies[indexToRelease].Release(mousePosition,Quaternion.identity);
+        catchedEnemies[indexToRelease].GetComponent<ISpawnable>().Init();
+        catchedEnemies.RemoveAt(indexToRelease);
         CurrentState = CatchState.Idle;
     }
     void TryToCatch()
@@ -139,7 +139,7 @@ public class EnemyCatcher : MonoBehaviour
             {
                 desiredIndex = 3;
             }
-            if(desiredIndex+1<=enemyCapacity && catchedEnemies[desiredIndex] != null)
+            if(desiredIndex+1<=enemyCapacity && desiredIndex < catchedEnemies.Count())
             {
                 SetMonsterIndex(desiredIndex);
             }

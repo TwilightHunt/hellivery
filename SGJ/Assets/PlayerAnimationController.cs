@@ -7,6 +7,7 @@ public class PlayerAnimationController : MonoBehaviour
     [HideInInspector] public Vector2 moveDirection;
     Animator animator;
     Rigidbody2D rb;
+    GroundMoveComponent moveComponent;
     bool isMovingForward;
     public float FallingThreshold = -10f;
     public bool isFalling;
@@ -16,11 +17,22 @@ public class PlayerAnimationController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponentInParent<Rigidbody2D>();
         isMovingForward = true;
+        moveComponent = GetComponentInParent<GroundMoveComponent>();
+        moveComponent.OnJump.AddListener(OnJump);
+        moveComponent.OnLand.AddListener(OnLand);
     }
+    void OnJump()
+    {
+        animator.SetTrigger("OnJump");
+    }
+    void OnLand()
+    {
 
+    }
     private void Update()
     {
-        animator.SetInteger("MovementSpeed", (int)Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+        animator.SetFloat("HorizontalSpeed", (int)Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+        animator.SetFloat("VerticalSpeed", rb.velocity.y);
         if (isMovingForward && moveDirection.x < 0)
         {
             Flip();
@@ -32,7 +44,6 @@ public class PlayerAnimationController : MonoBehaviour
             isMovingForward = true;
         }
 
-        animator.SetBool("isFalling", isFalling);
         //if (isFalling && !animator.GetCurrentAnimatorStateInfo(0).IsName("FlyAnimation")) { SetAnimation("FlyDown"); }
     }
     private void Flip()
