@@ -7,7 +7,8 @@ public class StartMenuButtons : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("TestScene");
+        Debug.Log("Game started");
+        SceneManager.LoadScene(2);
     }
 
     public void Exit()
