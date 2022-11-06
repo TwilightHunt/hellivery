@@ -42,7 +42,6 @@ public class FuguLogic : MonoBehaviour, ISpawnable
 
                     int explosionState = (int)(fuguSprites.Count + 2 - (distance / segment));
                     explosionState = Mathf.Clamp(explosionState, 0, fuguSprites.Count - 1);
-                    Debug.Log(explosionState);
                     spriteRenderer.sprite = fuguSprites[explosionState];
                 }
                 else
