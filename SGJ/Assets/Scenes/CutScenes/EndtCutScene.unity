@@ -488,8 +488,6 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 2359026847786213467, guid: 652e0b9c74a029d42b211eb30d65cf49, type: 2}
     value: {fileID: 1196413719}
-  - key: {fileID: -6828886596139922725, guid: 652e0b9c74a029d42b211eb30d65cf49, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 0}
     value: {fileID: 0}
   m_ExposedReferences:
@@ -539,3 +537,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dca7ef9d753234ea7caa389bba02f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: 0
