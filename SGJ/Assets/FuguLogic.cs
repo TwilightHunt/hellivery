@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 public class FuguLogic : MonoBehaviour, ISpawnable
 {
+    public UnityEngine.Events.UnityEvent OnExplosion;
     [Header("Explosion properties")]
     [SerializeField] float explosionRadius = 3f;
     [SerializeField] int damage = 1;
@@ -53,6 +54,8 @@ public class FuguLogic : MonoBehaviour, ISpawnable
     }
     private void Explode()
     {
+        OnExplosion?.Invoke();
+
         var gotHit = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (var item in gotHit)
         {
