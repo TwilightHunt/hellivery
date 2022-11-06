@@ -16,14 +16,14 @@ public class EnemyCatcher : MonoBehaviour
     public UnityEngine.Events.UnityEvent<string> OnReleaseFail;
     public UnityEngine.Events.UnityEvent OnReleaseSuccess;
     public UnityEngine.Events.UnityEvent OnCatchStateChanged;
-
+    public UnityEngine.Events.UnityEvent OnListUpdate;
 
     public CatchState CurrentState { get; private set; }
 
-    bool isIndexSelected = false;
-    int indexToRelease = 0;
-
-    List<CatchableEnemy> catchedEnemies = new List<CatchableEnemy>();
+    public bool IsIndexSelected { get; private set; } = false;
+    public int MonsterIndex { get; private set; } = 0;
+    public bool CanPlaceMonster { get; private set; }   
+    public List<CatchableEnemy> CatchedEnemies { get; private set; } = new List<CatchableEnemy>();
     public int EnemyCapacity { get => enemyCapacity; }
     [SerializeField] int enemyCapacity = 1;
     public float CatchRadius { get => catchRadius; }
@@ -31,9 +31,13 @@ public class EnemyCatcher : MonoBehaviour
 
     [SerializeField] float portalRadius = 0.3f;
 
+    public float NewRotation { get; private set; } = 0;
+
+    Camera mainCamera;
     private void Start()
     {
         CurrentState = CatchState.Idle;
+        mainCamera = Camera.main;
     }
     public void IncreaseRadius(float additionalRadius)
     {
@@ -61,23 +65,45 @@ public class EnemyCatcher : MonoBehaviour
     }
     public void SetMonsterIndex(int index)
     {
-        indexToRelease = index;
-        isIndexSelected = true;
+        if (index + 1 <= enemyCapacity && index < CatchedEnemies.Count())
+        {
+            MonsterIndex = index;
+            IsIndexSelected = true;
+        }
+
     }
     void Release()
     {
-       if (!isIndexSelected) return;
-        
+       if (!IsIndexSelected) 
+        {
+            OnReleaseFail?.Invoke("No index selected");
+            return;
+        }
+        if (!CanPlaceMonster)
+        {
+            OnReleaseFail?.Invoke("Not enough space");
+            return;
+        }
        
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        catchedEnemies[indexToRelease].Release(mousePosition,Quaternion.identity);
-        catchedEnemies[indexToRelease].GetComponent<ISpawnable>().Init();
-        catchedEnemies.RemoveAt(indexToRelease);
-        CurrentState = CatchState.Idle;
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        CatchedEnemies[MonsterIndex].Release(mousePosition,Quaternion.identity);
+        CatchedEnemies[MonsterIndex].GetComponent<ISpawnable>().Init();
+        CatchedEnemies.RemoveAt(MonsterIndex);
+        OnListUpdate?.Invoke();
+        OnReleaseSuccess?.Invoke();
+        ChangeState(CatchState.Idle);
+    }
+    public void ReturnMonster(int index)
+    {
+        CatchedEnemies[index].Reset();
+        CatchedEnemies.RemoveAt(index);
+        ChangeState(CatchState.Idle);
+        OnListUpdate?.Invoke();
+
     }
     void TryToCatch()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
         if (Vector2.Distance(mousePosition, transform.position) > catchRadius) return;
         var colliders = Physics2D.OverlapCircleAll(mousePosition, portalRadius);
@@ -86,17 +112,18 @@ public class EnemyCatcher : MonoBehaviour
         var enemy = colliders.FirstOrDefault(x => x.GetComponent<CatchableEnemy>() != null);
         if (enemy == null)
         {
-            OnCatchFail?.Invoke("No monsters found");
+            OnCatchFail?.Invoke("No monsters");
             return;
         }
         else
         {
             CatchableEnemy cEnemy = enemy.GetComponent<CatchableEnemy>();
-            if (catchedEnemies.Count() < enemyCapacity)
+            if (CatchedEnemies.Count() < enemyCapacity)
             {
                 cEnemy.Catch();
-                catchedEnemies.Add(cEnemy);
+                CatchedEnemies.Add(cEnemy);
                 OnCatchSuccess?.Invoke();
+                OnListUpdate?.Invoke();
             }
             else
             {
@@ -111,17 +138,28 @@ public class EnemyCatcher : MonoBehaviour
         {
             if (Input.GetButtonDown("QButton"))
             {
-                CurrentState = CatchState.Catching;
+                ChangeState(CatchState.Catching);
                 return;
             }
             if (Input.GetButtonDown("EButton"))
             {
-                CurrentState = CatchState.Releasing;
+                ChangeState(CatchState.Releasing);
                 return;
             }
         }
         if(CurrentState == CatchState.Releasing)
         {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                NewRotation += 180;
+            }
+
+            if (IsIndexSelected)
+            {
+                var mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                CanPlaceMonster = !Physics2D.BoxCast(mousePos, CatchedEnemies[MonsterIndex].EnemySprite.bounds.size, 0, Vector2.zero) && 
+                    Vector2.Distance(mousePos, transform.position) <= catchRadius;
+            }
             int desiredIndex = -1;
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -139,17 +177,16 @@ public class EnemyCatcher : MonoBehaviour
             {
                 desiredIndex = 3;
             }
-            if(desiredIndex+1<=enemyCapacity && desiredIndex < catchedEnemies.Count())
-            {
-                SetMonsterIndex(desiredIndex);
-            }
+            if (desiredIndex == -1) return;
+            SetMonsterIndex(desiredIndex);
         }
 
     }
     public void ChangeState(CatchState newState)
     {
-        isIndexSelected = false;
-        indexToRelease = -1;
+        IsIndexSelected = false;
+        MonsterIndex = -1;
+        NewRotation = 0;
         CurrentState = newState;
         OnCatchStateChanged?.Invoke();
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GroundMoveComponent : MonoBehaviour
@@ -13,7 +14,9 @@ public class GroundMoveComponent : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] Transform groundCheck;
     const float k_GroundedRadius = .2f;
-    bool isGrounded;
+    [SerializeField] float knockedTime;
+    public bool IsKnocked { get; private set; }
+    public bool IsGrounded { get; private set; }
 
     Rigidbody2D movingPlatformRb;
 
@@ -24,45 +27,57 @@ public class GroundMoveComponent : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded && canJump)
+        if (IsGrounded && canJump)
         {
             rb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
             OnJump?.Invoke();
             GetComponentInChildren<PlayerAnimationController>().SetAnimation("JumpAnimation");
         }
     }
-    private void Update()
+    public void KnockAway(Vector2 impactPosition,float force)
     {
-        if (canJump)
-        {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, k_GroundedRadius,groundMask);
-            if (colliders.Length > 0) 
-            {
-                if (!isGrounded)
-                {
-                    OnLand?.Invoke();
-                    isGrounded = true;
-                }
-            }
-            else isGrounded = false;
-        }
-
-        
+        IsKnocked = true;
+        StartCoroutine(StartKnockTimer());
+        rb.AddForce(impactPosition*-1 * force,ForceMode2D.Impulse);    
     }
-
     public void SetMovingPlatform(Rigidbody2D movingPlatformRb)
     {
         this.movingPlatformRb = movingPlatformRb;
     }
-    void FixedUpdate()
+    void CheckGround()
     {
-        if(movingPlatformRb == null)
+        if (canJump)
         {
-            rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, k_GroundedRadius, groundMask);
+            if (colliders.Length > 0)
+            {
+                if (!IsGrounded)
+                {
+                    OnLand?.Invoke();
+                    IsGrounded = true;
+                }
+            }
+            else IsGrounded = false;
         }
-        else
+    }
+    IEnumerator StartKnockTimer()
+    {
+        yield return new WaitForSeconds(knockedTime);
+        IsKnocked = false;
+    }
+    void Update()
+    {
+        CheckGround();
+        if (!IsKnocked)
         {
-            rb.velocity = new Vector2(MovementVector.x * speed + movingPlatformRb.velocity.x, rb.velocity.y);
+            if (movingPlatformRb == null)
+            {
+                rb.velocity = new Vector2(MovementVector.x * speed, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(MovementVector.x * speed + movingPlatformRb.velocity.x, rb.velocity.y);
+            }
         }
     }
 }

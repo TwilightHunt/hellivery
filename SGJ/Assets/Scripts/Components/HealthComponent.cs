@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public UnityEngine.Events.UnityEvent OnDeath;
+    public UnityEngine.Events.UnityEvent OnHeal;
 
-    // Update is called once per frame
-    void Update()
+    public int MaxHealth = 4;
+    public int CurrentHealth;
+    private void Start()
     {
-        
+        CurrentHealth = MaxHealth;
+    }
+    public void GetDamage(int damage)
+    {
+        CurrentHealth-=damage;
+        if(CurrentHealth<=0) OnDeath.Invoke();
     }
 }

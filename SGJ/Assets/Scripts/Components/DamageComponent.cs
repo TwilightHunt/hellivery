@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class DamageComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int heartsDamage = 1;
+    [SerializeField] float knockPower = 3f;
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (!collision.contacts[0].otherCollider.gameObject.GetComponent<DamageComponent>()) return;
+        var healthComp = collision.gameObject.GetComponent<HealthComponent>();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<GroundMoveComponent>().KnockAway(collision.GetContact(0).normal, knockPower);
+        }
+        if (healthComp)
+        {
+            healthComp.GetDamage(heartsDamage);
+        }
     }
 }

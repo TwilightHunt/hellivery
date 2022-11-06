@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class CatchableEnemy : MonoBehaviour
 {
-    SavedTransform transformOnCatch;
-
+    SavedTransform transformOnStart;
+    SavedTransform onCatchTransform;
     public Sprite EnemySprite { get; private set; }
-    
+
     private void Start()
     {
-        EnemySprite = GetComponentInChildren<SpriteRenderer>().sprite;
+        transformOnStart = new SavedTransform(transform);
+        
     }
+
     public void Catch()
     {
+        EnemySprite = GetComponentInChildren<SpriteRenderer>().sprite;
+        onCatchTransform = new SavedTransform(transform);
         gameObject.SetActive(false);
     }
     public void Release(Vector2 position, Quaternion rotation)
@@ -25,6 +29,13 @@ public class CatchableEnemy : MonoBehaviour
     public void Reset()
     {
         gameObject.SetActive(true);
+        onCatchTransform.ApplyTo(transform);
+        
+    }
+    public void FullReset()
+    {
+        gameObject.SetActive(true);
+        transformOnStart.ApplyTo(transform);
     }
 }
 

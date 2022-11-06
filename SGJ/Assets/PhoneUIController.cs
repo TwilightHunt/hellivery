@@ -8,7 +8,7 @@ public class PhoneUIController : MonoBehaviour
     [SerializeField] UIMenu SummonMenu;
     [SerializeField] UIMenu CatchMenu;
     [SerializeField] UIMenu HiddenMenu;
-
+    UIMenu enabledMenu;
     bool isHidden;
     EnemyCatcher catcherController;
     void Start()
@@ -16,18 +16,27 @@ public class PhoneUIController : MonoBehaviour
         isHidden = false;
         catcherController = FindObjectOfType<EnemyCatcher>();
         catcherController.OnCatchStateChanged.AddListener(OnStateChange);
+        EnableMenu(MainMenu);
     }
-
+    void EnableMenu(UIMenu newMenu)
+    {
+        if(enabledMenu != null) enabledMenu.Close();
+        newMenu.Enable();
+        enabledMenu = newMenu;
+    }
     void OnStateChange()
     {
         if (isHidden) return;
         switch (catcherController.CurrentState)
         {
             case CatchState.Idle:
+                EnableMenu(MainMenu);
                 break;
             case CatchState.Catching:
+                EnableMenu(CatchMenu);
                 break;
             case CatchState.Releasing:
+                EnableMenu(SummonMenu);
                 break;
             default:
                 break;
@@ -42,4 +51,5 @@ public class PhoneUIController : MonoBehaviour
 public abstract class UIMenu : MonoBehaviour
 {
     public abstract void Enable();
+    public abstract void Close();
 }

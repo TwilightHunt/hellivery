@@ -28,27 +28,32 @@ public class PlayerAnimationController : MonoBehaviour
     void OnLand()
     {
         animator.SetTrigger("OnLand");
+        
     }
     private void Update()
     {
+
+        if (!moveComponent.IsKnocked)
+        {
         animator.SetInteger("HorizontalSpeed", (int)Mathf.Abs(Input.GetAxisRaw("Horizontal")));
-        animator.SetFloat("VerticalVelocity", rb.velocity.y);
-        if (isMovingForward && moveDirection.x < 0)
-        {
-            Flip();
-            isMovingForward = false;
         }
-        else if(!isMovingForward && moveDirection.x > 0)
+        animator.SetFloat("VerticalVelocity", rb.velocity.y);
+        animator.SetBool("IsGrounded", moveComponent.IsGrounded);
+
+        if (!moveComponent.IsKnocked)
         {
-            Flip();
-            isMovingForward = true;
+            if (isMovingForward && moveDirection.x < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                isMovingForward = false;
+            }
+            else if (!isMovingForward && moveDirection.x > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                isMovingForward = true;
+            }
         }
 
-        //if (isFalling && !animator.GetCurrentAnimatorStateInfo(0).IsName("FlyAnimation")) { SetAnimation("FlyDown"); }
-    }
-    private void Flip()
-    {
-        transform.Rotate(new Vector3(0, 180, 0));
     }
 
     public void SetAnimation(string animationName)
