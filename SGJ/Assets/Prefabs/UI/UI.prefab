@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -304.99, y: 112.637924}
+  m_AnchoredPosition: {x: -309.6563, y: 126.67119}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &346377615
@@ -203,7 +203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -304.49, y: 112.65596}
+  m_AnchoredPosition: {x: -309.65628, y: 126.689224}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &679434466
@@ -368,8 +368,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.79921466}
-  m_AnchoredPosition: {x: -5.950012, y: 30}
-  m_SizeDelta: {x: -40.46, y: 0}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &778408959346048384
 CanvasRenderer:
@@ -1695,6 +1695,7 @@ GameObject:
   - component: {fileID: 3668639381085491333}
   - component: {fileID: 2700524883238468454}
   - component: {fileID: 8270884039594240422}
+  - component: {fileID: 778408960261947796}
   m_Layer: 5
   m_Name: HealthPanel
   m_TagString: Untagged
@@ -1771,6 +1772,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6c5a97d373ce845ab58df94fabf209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeartPrefab: {fileID: 1079420317982994132, guid: f603fa62f4d6e2146a151a4438f79440, type: 3}
+--- !u!114 &778408960261947796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6438030148726364099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 15
+    m_Right: 15
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 3
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &9160721256434677993
 GameObject:
   m_ObjectHideFlags: 0
