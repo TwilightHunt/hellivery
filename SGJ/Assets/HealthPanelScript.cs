@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FuguFloat : MonoBehaviour
+public class HealthPanelScript : MonoBehaviour
 {
-    
+    // Start is called before the first frame update
     void Start()
     {
         
@@ -13,6 +13,6 @@ public class FuguFloat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            
+        
     }
 }

@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 5145600409689871432}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16af3d4f582ad2a4ea543a12a2225611, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -112,6 +112,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5145600410132641263}
   - component: {fileID: 5145600410132641262}
+  - component: {fileID: 596956390}
+  - component: {fileID: 596956391}
+  - component: {fileID: 596956386}
+  - component: {fileID: 596956389}
+  - component: {fileID: 596956392}
   m_Layer: 0
   m_Name: Fugu
   m_TagString: Untagged
@@ -146,8 +151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2c4d3bcbb2fe948ad2ba22de4bd022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 5
-  minDistance: 1.2
+  explosionRadius: 3
+  damage: 1
+  explosionForce: 8
+  explosionParticles: {fileID: 0}
+  maxDistance: 10
+  minDistance: 3
   fuguSprites:
   - {fileID: 21300000, guid: 38b7f4b70c4781f45a1a647a1554eb14, type: 3}
   - {fileID: 21300000, guid: d65a638e3fdbc7845a3c65e7f4b22ce6, type: 3}
@@ -155,6 +164,78 @@ MonoBehaviour:
   - {fileID: 21300000, guid: faa94bfcaf9f25547b805123bf4008da, type: 3}
   - {fileID: 21300000, guid: 105ed970fedc64a45b0030a34be7a69e, type: 3}
   - {fileID: 21300000, guid: 984227eacfa561c49898d4c79107acf3, type: 3}
-  - {fileID: 21300000, guid: 7288b7e34c6f1d24389c321a13280075, type: 3}
-  - {fileID: 21300000, guid: b993d4331b4561c4c8b8d8b934da637c, type: 3}
-  - {fileID: 21300000, guid: 62eb324836988394d805cf38e42aad67, type: 3}
+  explosionTimer: 1.5
+--- !u!50 &596956390
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145600410132641261}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &596956391
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145600410132641261}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.65
+--- !u!114 &596956386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145600410132641261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dac2b68fa29b6345b6d835c905ac69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &596956389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145600410132641261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6dc63113e32cde498e3e13a00c2feeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTime: 15
+--- !u!114 &596956392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145600410132641261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444058807ae40f94eaa140d132963584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
