@@ -18,4 +18,11 @@ public class HealthComponent : MonoBehaviour
         CurrentHealth-=damage;
         if(CurrentHealth<=0) OnDeath.Invoke();
     }
+    IEnumerator DeathCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        Debug.Log("Death");
+
+        OnDeath.Invoke();
+    }
 }
