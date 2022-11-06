@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: visionRaycastTransform
       value: 
       objectReference: {fileID: 3991527565408824659}
+    - target: {fileID: -2069099109014111446, guid: 750ff997537b24740844b9a018b44b89, type: 3}
+      propertyPath: EnemySprite
+      value: 
+      objectReference: {fileID: 883455799240546533, guid: df75db738bdf4f54b8ca024381926446, type: 3}
     - target: {fileID: 1608579947620703589, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: m_Size.x
       value: 5.07903

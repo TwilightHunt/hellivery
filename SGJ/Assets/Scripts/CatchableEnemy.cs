@@ -6,7 +6,7 @@ public class CatchableEnemy : MonoBehaviour
 {
     SavedTransform transformOnStart;
     SavedTransform onCatchTransform;
-    public Sprite EnemySprite { get; private set; }
+    public Sprite EnemySprite;
 
     private void Start()
     {
@@ -16,7 +16,6 @@ public class CatchableEnemy : MonoBehaviour
 
     public void Catch()
     {
-        EnemySprite = GetComponentInChildren<SpriteRenderer>().sprite;
         onCatchTransform = new SavedTransform(transform);
         gameObject.SetActive(false);
     }

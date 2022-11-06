@@ -779,85 +779,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &596956385 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5145600410132641261, guid: de2b1d31634d22545b46075b7b76a645, type: 3}
-  m_PrefabInstance: {fileID: 5145600409588179212}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &596956386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596956385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dac2b68fa29b6345b6d835c905ac69b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &596956389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596956385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6dc63113e32cde498e3e13a00c2feeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnTime: 15
---- !u!50 &596956390
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596956385}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &596956391
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596956385}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.65
---- !u!114 &596956392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596956385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 444058807ae40f94eaa140d132963584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &618786802
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,8 +3810,43 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8270884039594240422, guid: 9f108cb158239b1478d2836a21e113d4, type: 3}
+      propertyPath: HeartPrefab
+      value: 
+      objectReference: {fileID: 1079420317982994132, guid: f603fa62f4d6e2146a151a4438f79440, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f108cb158239b1478d2836a21e113d4, type: 3}
+--- !u!1 &778408960261947795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6438030148726364099, guid: 9f108cb158239b1478d2836a21e113d4, type: 3}
+  m_PrefabInstance: {fileID: 778408960261947793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &778408960261947796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778408960261947795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 15
+    m_Right: 15
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 3
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1001 &1556414401759228715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4036,33 +3992,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5145600409689871434, guid: de2b1d31634d22545b46075b7b76a645, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 16af3d4f582ad2a4ea543a12a2225611, type: 2}
     - target: {fileID: 5145600410132641261, guid: de2b1d31634d22545b46075b7b76a645, type: 3}
       propertyPath: m_Name
       value: Fugu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145600410132641262, guid: de2b1d31634d22545b46075b7b76a645, type: 3}
-      propertyPath: maxDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145600410132641262, guid: de2b1d31634d22545b46075b7b76a645, type: 3}
-      propertyPath: minDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145600410132641262, guid: de2b1d31634d22545b46075b7b76a645, type: 3}
-      propertyPath: explosionForce
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145600410132641262, guid: de2b1d31634d22545b46075b7b76a645, type: 3}
-      propertyPath: explosionRadius
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145600410132641262, guid: de2b1d31634d22545b46075b7b76a645, type: 3}
-      propertyPath: fuguSprites.Array.size
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5145600410132641263, guid: de2b1d31634d22545b46075b7b76a645, type: 3}
       propertyPath: m_RootOrder
