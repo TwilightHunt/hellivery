@@ -55,6 +55,18 @@ PrefabInstance:
       propertyPath: OtherPortal
       value: 
       objectReference: {fileID: 9164693503604792346}
+    - target: {fileID: 4241250931817985674, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
+      propertyPath: OnPortalTeleportation.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241250931817985674, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
+      propertyPath: OnPortalTeleportation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241250931817985674, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
+      propertyPath: OnPortalTeleportation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4241250931817985675, guid: 0b77996dbc7900841a1d6033d52a971f, type: 3}
       propertyPath: m_RootOrder
       value: 0

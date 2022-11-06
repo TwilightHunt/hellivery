@@ -39,18 +39,6 @@ public class ReleaseCatchDrawer : MonoBehaviour
     }
     void Update()
     {
-        if (enemyCatcher.CurrentState != CatchState.Idle)
-        {
-            switch (enemyCatcher.CurrentState)
-            {
-                case CatchState.Catching:
-                    
-                    break;
-                case CatchState.Releasing:
-                    break;
-                default:
-                    break;
-            }
-        }    
+
     }
 }
