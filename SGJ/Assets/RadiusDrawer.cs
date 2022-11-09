@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReleaseCatchDrawer : MonoBehaviour
+public class RadiusDrawer : MonoBehaviour
 {
     EnemyCatcher enemyCatcher;
     LineRenderer lineRenderer;

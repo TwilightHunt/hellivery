@@ -210,23 +210,23 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8868261911419104152}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0f214b772e7664549a69fe8aa29fea99, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.129
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 0.3396454
+  MaxDistance: 2.744316
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -234,23 +234,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.12376322
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.46713257
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -1.141244
+      outSlope: -1.141244
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -312,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3778591191958643115, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: visionDistance
-      value: 0.6
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -3778591191958643115, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: groundRaycastTransform
@@ -324,6 +324,10 @@ PrefabInstance:
       objectReference: {fileID: 3991527565408824659}
     - target: {fileID: -2069099109014111446, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: EnemySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5202c8949a2f4c34ca5002784f9335ed, type: 3}
+    - target: {fileID: -2069099109014111446, guid: 750ff997537b24740844b9a018b44b89, type: 3}
+      propertyPath: EnemyCardSprite
       value: 
       objectReference: {fileID: 883455799240546533, guid: df75db738bdf4f54b8ca024381926446, type: 3}
     - target: {fileID: 1608579947620703589, guid: 750ff997537b24740844b9a018b44b89, type: 3}
@@ -348,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2204246194640935682, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.04
+      value: -2.09
       objectReference: {fileID: 0}
     - target: {fileID: 2550937811446172101, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: m_Layer
@@ -396,11 +400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218271656676110151, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.958473
+      value: 179.80605
       objectReference: {fileID: 0}
     - target: {fileID: 6218271656676110151, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.16947412
+      value: 126.67318
       objectReference: {fileID: 0}
     - target: {fileID: 6218271656676110151, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -444,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8576857470237075104, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: m_Name
-      value: MovingEnemy
+      value: MovingEnemy (5)
       objectReference: {fileID: 0}
     - target: {fileID: 8576857470237075104, guid: 750ff997537b24740844b9a018b44b89, type: 3}
       propertyPath: m_Layer

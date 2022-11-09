@@ -18,12 +18,12 @@ public class MovingAI : MonoBehaviour, ISpawnable
     void Update()
     {
 
-        if (Physics2D.Raycast(visionRaycastTransform.position, moveDirection, visionDistance, ~LayerMask.GetMask("Ignore Raycast")))
+        if (Physics2D.Raycast(visionRaycastTransform.position, moveDirection, visionDistance, ~LayerMask.GetMask("Ignore Raycast","Player")))
         {
             Flip();
             SetMoveVector();
         }
-        else if (!Physics2D.Raycast(groundRaycastTransform.position, Vector2.down, groundDistance, ~LayerMask.GetMask("Ignore Raycast")))
+        else if (!Physics2D.Raycast(groundRaycastTransform.position, Vector2.down, groundDistance, ~LayerMask.GetMask("Ignore Raycast", "Player")))
         {
             Flip();
             SetMoveVector();

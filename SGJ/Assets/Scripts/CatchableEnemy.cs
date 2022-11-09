@@ -7,7 +7,7 @@ public class CatchableEnemy : MonoBehaviour
     SavedTransform transformOnStart;
     SavedTransform onCatchTransform;
     public Sprite EnemySprite;
-
+    public Sprite EnemyCardSprite;
     private void Start()
     {
         transformOnStart = new SavedTransform(transform);

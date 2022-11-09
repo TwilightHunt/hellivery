@@ -255,7 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444058807ae40f94eaa140d132963584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySprite: {fileID: -7863336350822884704, guid: df75db738bdf4f54b8ca024381926446, type: 3}
+  EnemySprite: {fileID: 21300000, guid: 5a27846fe2b1d1e4c8b7f3564c6a3a41, type: 3}
+  EnemyCardSprite: {fileID: -7863336350822884704, guid: df75db738bdf4f54b8ca024381926446, type: 3}
 --- !u!1 &5331061088444819650
 GameObject:
   m_ObjectHideFlags: 0

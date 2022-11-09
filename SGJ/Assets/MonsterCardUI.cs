@@ -13,7 +13,7 @@ public class MonsterCardUI : MonoBehaviour
     {
         storedIndex = index; 
         var imageRenderer = GetComponent<Image>();
-        monsterImage.sprite = storedEnemy.EnemySprite;
+        monsterImage.sprite = storedEnemy.EnemyCardSprite;
         monsterIndexText.text = (storedIndex+1).ToString();
     }
     public void ResetMonsterButton()
